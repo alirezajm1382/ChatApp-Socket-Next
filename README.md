@@ -16,7 +16,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+This automatically starts the server.js file as well.
+
+## Note
+
+For any usage except for development environment, you need to run `node server.js` in the terminal separately.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+## Usage
+
+1. **Enter Your Name**: When you first open the application, you will be prompted to enter your name. This name will be displayed in the chat.
+2. **Join the Chat**: After entering your name, click the "Join Chat" button to connect to the chat room.
+3. **Send Messages**: Type your message in the input box at the bottom and hit "Send" to share it with other users in the chat.
+4. **Real-time Communication**: You will see messages from other users in real-time as they join the chat and send messages.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
