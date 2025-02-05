@@ -1,9 +1,12 @@
 const WebSocket = require("ws");
 const http = require("http");
 
+const PORT = process.env.PORT || 3001;
+
+// Add CORS configuration
 const server = http.createServer((req, res) => {
   res.writeHead(200, {
-    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": process.env.ALLOWED_ORIGIN || "*",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   });
@@ -92,7 +95,6 @@ wss.on("connection", (ws, req) => {
   });
 });
 
-const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`WebSocket server is running on port ${PORT}`);
 });

@@ -81,8 +81,7 @@ export class WebRTCConnection {
 
   public connect() {
     try {
-      const wsProtocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-      const wsUrl = `${wsProtocol}//${window.location.hostname}:3001/ws`;
+      const wsUrl = process.env.NEXT_PUBLIC_WS_URL || `ws://${window.location.hostname}:3001/ws`;
       console.log("Connecting to WebSocket server at:", wsUrl);
 
       this.ws = new WebSocket(wsUrl);
