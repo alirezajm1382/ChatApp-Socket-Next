@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { WebRTCConnection } from "../utils/webrtc";
+import { SocketIOConnection } from "../utils/socket";
 import { MessageContainer } from "../components/MessageContainer";
 import { MessageInput } from "../components/MessageInput";
 
@@ -17,25 +17,25 @@ const Home: React.FC = () => {
   const [inputMessage, setInputMessage] = useState("");
   const [username, setUsername] = useState("");
   const [isConnected, setIsConnected] = useState(false);
-  const webrtcRef = useRef<WebRTCConnection | null>(null);
+  const socketRef = useRef<SocketIOConnection | null>(null);
 
   useEffect(() => {
-    if (username && !webrtcRef.current) {
-      webrtcRef.current = new WebRTCConnection(username);
+    if (username && !socketRef.current) {
+      socketRef.current = new SocketIOConnection(username);
 
-      webrtcRef.current.onMessage((message, senderId, senderName) => {
+      socketRef.current.onMessage((message, senderId, senderName) => {
         addMessage(message, senderId, senderName);
       });
 
-      webrtcRef.current.onUserJoined((userId, username) => {
+      socketRef.current.onUserJoined((userId, username) => {
         addSystemMessage(`${username} joined the chat`);
       });
 
-      webrtcRef.current.onUserLeft((userId, username) => {
+      socketRef.current.onUserLeft((userId, username) => {
         addSystemMessage(`${username} left the chat`);
       });
 
-      webrtcRef.current.connect();
+      socketRef.current.connect();
       setIsConnected(true);
     }
   }, [username]);
@@ -58,8 +58,8 @@ const Home: React.FC = () => {
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
-    if (inputMessage.trim() && webrtcRef.current) {
-      webrtcRef.current.sendMessage(inputMessage);
+    if (inputMessage.trim() && socketRef.current) {
+      socketRef.current.sendMessage(inputMessage);
       addMessage(inputMessage, "me", username);
       setInputMessage("");
     }
