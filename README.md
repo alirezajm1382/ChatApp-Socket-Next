@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Note
+
+For any usage except for development environment, you need to run `node server/server.js` in the terminal separately.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+Reminder: The ```server.js``` file is only used for development environment.
 
 ## Getting Started
 
@@ -17,14 +23,6 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 This automatically starts the server.js file as well.
-
-## Note
-
-For any usage except for development environment, you need to run `node server/server.js` in the terminal separately.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-Reminder: The ```server.js``` file is only used for development environment.
 
 ## Usage
 
