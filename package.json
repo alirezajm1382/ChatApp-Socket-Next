@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:server": "node server.js",
+    "dev:server": "node server/server.js",
     "dev:client": "next dev --turbo",
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "build": "next build",

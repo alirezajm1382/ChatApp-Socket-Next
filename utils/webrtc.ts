@@ -86,6 +86,15 @@ export class WebRTCConnection {
 
       this.ws = new WebSocket(wsUrl);
 
+      this.ws.onerror = (error) => {
+        console.error("WebSocket error:", error);
+        if (wsUrl.startsWith('wss://')) {
+          const fallbackUrl = wsUrl.replace('wss://', 'ws://');
+          console.log("Attempting fallback connection to:", fallbackUrl);
+          this.ws = new WebSocket(fallbackUrl);
+        }
+      };
+
       this.ws.onopen = () => {
         console.log("WebSocket connected");
         if (this.ws) {
@@ -102,10 +111,6 @@ export class WebRTCConnection {
           console.log("Attempting to reconnect...");
           this.connect();
         }, 3000);
-      };
-
-      this.ws.onerror = (error) => {
-        console.error("WebSocket error:", error);
       };
 
       this.ws.onmessage = async (event) => {

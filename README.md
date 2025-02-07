@@ -20,9 +20,11 @@ This automatically starts the server.js file as well.
 
 ## Note
 
-For any usage except for development environment, you need to run `node server.js` in the terminal separately.
+For any usage except for development environment, you need to run `node server/server.js` in the terminal separately.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+Reminder: The ```server.js``` file is only used for development environment.
 
 ## Usage
 
